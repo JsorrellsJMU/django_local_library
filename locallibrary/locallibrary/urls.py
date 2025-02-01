@@ -21,7 +21,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('JacobSorrells/', admin.site.urls),
     path('catalog/', include('catalog.urls')),  # Include URLs from the catalog app.
     path('', RedirectView.as_view(url='catalog/', permanent=True)),  # Redirect root URL to /catalog/
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
