@@ -32,7 +32,11 @@ class Book(models.Model):
     isbn = models.CharField('ISBN', max_length=13, unique=True,
                             help_text='13 Character ISBN number')
     genre = models.ManyToManyField(Genre, help_text='Select a genre for this book')
-
+    language = models.CharField(
+        max_length=20,
+        help_text='Enter the book language (e.g. English, Farsi, etc.)',
+        default='English'
+    )
     def __str__(self):
         """String for representing the Model object."""
         return self.title
@@ -70,4 +74,5 @@ class BookInstance(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return f'{self.id} ({self.book.title})'
+
 
