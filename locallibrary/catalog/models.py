@@ -37,6 +37,7 @@ class Book(models.Model):
         help_text='Enter the book language (e.g. English, Farsi, etc.)',
         default='English'
     )
+    
     def __str__(self):
         """String for representing the Model object."""
         return self.title
@@ -44,6 +45,11 @@ class Book(models.Model):
     def get_absolute_url(self):
         """Returns the URL to access a detail record for this book."""
         return reverse('book-detail', args=[str(self.id)])
+    def display_genre(self):
+        return ', '.join(genre.name for genre in self.genre.all()[:3])
+
+    display_genre.short_description = 'Genre'
+
 
 class BookInstance(models.Model):
     """Model representing a specific copy of a book (i.e. that can be borrowed from the library)."""
@@ -70,9 +76,21 @@ class BookInstance(models.Model):
 
     class Meta:
         ordering = ['due_back']
+    
 
     def __str__(self):
         """String for representing the Model object."""
         return f'{self.id} ({self.book.title})'
+class Language(models.Model):
+    name = models.CharField(max_length=200, help_text="Enter the book's natural language (e.g., English, French, etc.)")
+
+    def __str__(self):
+        return self.name
+def display_genre(self):
+    """Create a string for the Genre. This is required to display genre in Admin."""
+    return ', '.join(genre.name for genre in self.genre.all()[:3])
+
+display_genre.short_description = 'Genre'
+
 
 
