@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Registering the catalog app:
     'catalog.apps.CatalogConfig',
+    'ninja',
 ]
 
 MIDDLEWARE = [

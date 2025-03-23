@@ -7,4 +7,5 @@ urlpatterns = [
     path('authors/', views.AuthorListView.as_view(), name='authors'),  # List all authors (CBV)
     path('book/<int:pk>/', views.BookDetailView.as_view(), name='book-detail'),  # Book detail view (CBV)
     path('author/<int:pk>/', views.AuthorDetailView.as_view(), name='author-detail'),  # Author detail view (CBV)
+    
 ]

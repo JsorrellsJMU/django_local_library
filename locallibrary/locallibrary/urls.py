@@ -19,9 +19,12 @@ from django.urls import path, include
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
+from catalog.api import api  # Make sure this is the correct path to your api.py
+
 
 urlpatterns = [
     path('JacobSorrells/', admin.site.urls),
+    path("api/", api.urls),  # This is the line that makes the /api/ endpoints work
     path('catalog/', include('catalog.urls')),  # Include URLs from the catalog app.
     path('', RedirectView.as_view(url='catalog/', permanent=True)),  # Redirect root URL to /catalog/
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
