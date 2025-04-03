@@ -18,7 +18,7 @@ from django.core.management.utils import get_random_secret_key
 import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 env = environ.Env()
 env.read_env(str(BASE_DIR / ".env"))
 
@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Registering the catalog app:
-    'catalog.apps.CatalogConfig',
+    'locallibrary.catalog.apps.CatalogConfig',  # updated path
     'ninja',
 ]
 
@@ -64,7 +64,7 @@ ROOT_URLCONF = 'locallibrary.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS':[BASE_DIR / "catalog/templates"],
+        'DIRS': [BASE_DIR / "locallibrary" / "catalog" / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
